@@ -1,4 +1,4 @@
-(ns org.clojars.t_yano.protocol)
+(ns org.clojars.t-yano.lang.protocol)
 
 (defmacro defdelegation
   "Enhanced defprotocol Macro in Clojure

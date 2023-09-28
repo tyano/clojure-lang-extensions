@@ -1,4 +1,4 @@
-(ns org.clojars.t_yano.core
+(ns org.clojars.t-yano.lang.core
   (:refer-clojure :exclude [group-by])
   (:require [clojure.core :as core]
             [clojure.string :as string]))
