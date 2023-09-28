@@ -1,0 +1,1 @@
+{:lint-as {org.clojars.t-yano.lang.protocol/defdelegation clojure.core/defprotocol}}
