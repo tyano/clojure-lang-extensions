@@ -1,4 +1,4 @@
-(defproject org.clojars.t_yano/lang-extensions "1.0-SNAPSHOT"
+(defproject org.clojars.t_yano/lang-extensions "0.1.0"
   :description "utility functions for clojure language"
   :url "http://github.com/tyano/lang-extensions"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
