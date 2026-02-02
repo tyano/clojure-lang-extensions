@@ -1,3 +1,5 @@
 {:lint-as {org.clojars.t-yano.lang.protocol/defdelegation clojure.core/defprotocol
            org.clojars.t-yano.lang.protocol/defdelegated clojure.core/defrecord
-           org.clojars.t-yano.lang.protocol/delegated clojure.core/reify}}
+           org.clojars.t-yano.lang.protocol/delegated clojure.core/reify
+           org.clojars.t-yano.lang.protocol/extend-delegated clojure.core/extend-type
+           org.clojars.t-yano.lang.protocol/extend-delegation clojure.core/extend-protocol}}

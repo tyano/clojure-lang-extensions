@@ -117,3 +117,49 @@
                       body)]
     `(reify
        ~@new-body)))
+
+(defmacro extend-delegated
+  "Extend multiple protocols to a given type.
+
+  Example:
+  (extend-delegated-type MyType {:prefix \"-\" :as options}
+    ProtocolA
+      (method-a [this] ...)
+    ProtocolB
+      (method-b [this] ...))"
+  [type & body]
+  (let [options (if (map? (first body)) (first body) {})
+        {:keys [prefix suffix] :or {prefix "-" suffix ""}} options
+        body (if (map? (first body)) (rest body) body)
+        new-body (map (fn [definition]
+                        (if (list? definition)
+                          (let [fn-sym  (symbol (str prefix (name (first definition)) suffix))
+                                fn-body (rest definition)]
+                            (apply list fn-sym fn-body))
+                          definition))
+                      body)]
+    `(extend-type ~type
+       ~@new-body)))
+
+(defmacro extend-delegation
+  "Extend multiple types to a given protocol.
+
+   Example:
+   (extend-delegation ProtocolA {:prefix \"-\" :as options}
+     TypeA
+       (method-a [this] ...)
+     TypeB
+       (method-a [this] ...))"
+  [protocol & body]
+  (let [options (if (map? (first body)) (first body) {})
+        {:keys [prefix suffix] :or {prefix "-" suffix ""}} options
+        body (if (map? (first body)) (rest body) body)
+        new-body (map (fn [definition]
+                        (if (list? definition)
+                          (let [fn-sym  (symbol (str prefix (name (first definition)) suffix))
+                                fn-body (rest definition)]
+                            (apply list fn-sym fn-body))
+                          definition))
+                      body)]
+    `(extend-protocol ~protocol
+       ~@new-body)))
